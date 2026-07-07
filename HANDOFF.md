@@ -1,8 +1,25 @@
 # HANDOFF
 
-Last session: 2026-07-06 (session 4 — worker UI control, caption editing, GitHub prep)
+Last session: 2026-07-07 (session 5 — public release + search export)
 
-## Session 4 summary (newest)
+## Session 5 summary (newest)
+
+- **Published to GitHub: https://github.com/wsimon98/fotorganize** (branch `main`,
+  history squashed to one clean commit; full dev history stays on the local, unpushed
+  `local-history` branch). All example names in docs/tests/UI are celebrities
+  (George Clooney / Taylor Swift) and example paths are generic (`\\nas-server\...`,
+  `Z:\family\...`).
+- **New: search-results LoRA export** — the place/thing counterpart to person export.
+  `POST /api/search/export` (`services/lora_export.export_search`): every FTS caption
+  match of `q` (or an explicit tile selection) is copied as `img_NNNN.jpg` + matching
+  `.txt` (optional trigger prepended) with manifest.json + contact sheet, recorded in
+  `exports` with type `search`. UI: "Export results for LoRA…" button on Search.
+- 21 tests passing.
+- A separate LoRA trainer (ostris/ai-toolkit — supports Z-Image / Z-Image Turbo) is
+  installed OUTSIDE this project and consumes the export folders. fotorganize has no
+  dependency on it.
+
+## Session 4 summary
 
 Driven by real first-use feedback: the user queued a face job and nothing happened because
 no worker was running and there was no way to start one from the UI.

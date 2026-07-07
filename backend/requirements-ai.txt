@@ -1,0 +1,18 @@
+# AI dependencies (Phases 3-5). Installed by scripts\setup_ai.bat, NOT by requirements.txt,
+# because torch must come from the CUDA index FIRST (see below) or a CPU build gets pulled in.
+#
+# IMPORTANT install order (setup_ai.bat handles this):
+#   1. pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+#   2. pip install -r requirements-ai.txt
+#   3. pip uninstall -y onnxruntime        (insightface pulls the CPU build; keep only -gpu)
+# then verify: python -c "import torch; print(torch.cuda.is_available())"
+#
+# Blackwell (RTX 50xx / sm_120) REQUIRES the cu128 wheels. Older CUDA builds silently
+# fall back to CPU. See TROUBLESHOOTING.md.
+
+transformers>=4.44,<4.50
+timm>=1.0
+einops>=0.8
+accelerate>=1.0
+insightface>=0.7
+onnxruntime-gpu>=1.19

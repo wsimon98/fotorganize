@@ -1,0 +1,26 @@
+# local config (contains your paths/settings — copy .env.example instead)
+.env
+
+# python
+backend/venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# user data — never commit family photos, databases, thumbnails, or exports
+data/app.db*
+data/thumbnails/
+data/face_crops/
+data/exports/
+data/logs/
+data/backups/
+data/test_photos/
+data/models/
+data/worker.pid
+data/fotorganize.pid
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.gstack/
